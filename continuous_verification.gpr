@@ -1,0 +1,5 @@
+project continuous_verification is
+    
+    for source_dirs use ("src");
+
+end continuous_verification;
