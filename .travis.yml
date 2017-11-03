@@ -1,3 +1,12 @@
 sudo: false
+before_script:
+    - wget http://mirrors.cdn.adacore.com/art/591c6d80c7a447af2deed1d7 -O /tmp/gnat.tar.bz2
+    - tar -C /tmp/ -xf /tmp/gnat.tar.bz2
+    - yes | /tmp/gnat-gpl-2017-x86_64-linux-bin/doinstall
+    - wget http://mirrors.cdn.adacore.com/art/592c5299c7a447388d5c991d -O /tmp/spark.tar.bz2
+    - tar -C /tmp/ -xf /tmp/spark.tar.bz2 
+    - cd /tmp/spark-discovery-gpl-2017-x86_64-linux-bin
+    - yes | ./doinstall
+    - cd -
 script:
-    - gnatprove -P continuous_verification.gpr -j0 --report=all --level=2 --pedantic --warnings=error
+    - PATH=$PATH:/tmp/gnat-gpl-2017-x86_64-linux-bin/y/bin:/tmp/spark-discovery-gpl-2017-x86_64-linux-bin/y/bin gnatprove -P continuous_verification.gpr -j0 --report=all --level=2 --pedantic --warnings=error
