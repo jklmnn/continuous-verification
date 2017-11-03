@@ -1,0 +1,3 @@
+sudo: false
+script:
+    - gnatprove -P continuous_verification.gpr -j0 --report=all --level=2 --pedantic --warnings=error
