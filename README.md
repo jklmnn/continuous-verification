@@ -6,7 +6,4 @@ The current process consists of downloading and installing the GPL versions of [
 With the current state it is possible to:
  - check if the project builds without Ada warnings
  - automatically run the SPARK proof
-
-Yet some features are missing/not optimal:
- - [automated tool installation is quite hacky](https://github.com/jklmnn/continuous-verification/issues/2)
- - [unproved checks aren't handles as build errors](https://github.com/jklmnn/continuous-verification/issues/1)
+ - fail the CI test if SPARK does not prove
