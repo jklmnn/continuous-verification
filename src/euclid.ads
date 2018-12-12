@@ -3,6 +3,7 @@ with SPARK_Mode
 is
 
     function gcd(A: Integer; B: Integer) return Integer with
-      Depends => (gcd'Result => (A, B));
+      Depends => (gcd'Result => (A),
+                  null => B);
 
 end euclid;
