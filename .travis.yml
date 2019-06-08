@@ -1,10 +1,12 @@
 sudo: true
+env:
+    - CV_PROJECT=continuous_verification.gpr
 before_install:
     - sudo apt-get update
     - sudo apt-get install -y build-essential git wget libfontconfig1 libx11-xcb1
 before_script:
-    - wget http://mirrors.cdn.adacore.com/art/5b0d7bffa3f5d709751e3e04 -O /tmp/gnat-community-2018-20180528-x86_64-linux-bin
+    - wget http://mirrors.cdn.adacore.com/art/5cdffc5409dcd015aaf82626 -O /tmp/gnat-community-2019-20190517-x86_64-linux-bin
     - git clone https://github.com/AdaCore/gnat_community_install_script.git /tmp/gnat_community_install_script
-    - /tmp/gnat_community_install_script/install_package.sh /tmp/gnat-community-2018-20180528-x86_64-linux-bin /usr/local/gnat
+    - /tmp/gnat_community_install_script/install_package.sh /tmp/gnat-community-2019-20190517-x86_64-linux-bin /usr/local/gnat
 script:
-    - PATH=$PATH:/usr/local/gnat/bin gnatprove -P continuous_verification.gpr -j0 --report=all --level=2 --pedantic --warnings=error --checks-as-errors
+    - PATH=$PATH:/usr/local/gnat/bin gnatprove -P $CV_PROJECT -j0 --report=all --level=2 --pedantic --warnings=error --checks-as-errors
