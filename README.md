@@ -7,3 +7,5 @@ With the current state it is possible to:
  - check if the project builds without Ada warnings
  - automatically run the SPARK proof
  - fail the CI test if SPARK does not prove
+
+To use the GitHub template simply create a new repository from it, enable Travis and replace the `src` directory and the `.gpr` file with your own. Then change the `CV_PROJECT` variable in `.travis.yml` to your own project file.
